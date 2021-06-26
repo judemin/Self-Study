@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "devwatch": "tsc -w",
+    "transpile": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,5 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "typescript": "^4.3.4"
+  },
+  "devDependencies": {
+    "tslint": "^6.1.3"
   }
 }
