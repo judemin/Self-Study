@@ -47,7 +47,3 @@ pi.hello();
 class PersonChild extends PersonAlias{
 
 } // 클래스가 인터페이스 상속 불가
-
-/*
-* Week2 Seminar 8
-*/
