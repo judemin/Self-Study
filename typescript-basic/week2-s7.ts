@@ -44,6 +44,4 @@ class PersonImpl implements PersonAlias{
 let pi: PersonImpl = new PersonImpl();
 pi.hello();
 
-class PersonChild extends PersonAlias{
-
-} // 클래스가 인터페이스 상속 불가
+// class PersonChild extends PersonAlias{} // 클래스가 인터페이스 상속 불가
