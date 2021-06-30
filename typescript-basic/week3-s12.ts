@@ -8,7 +8,7 @@ class CustomIterable implements Iterable<string>{
     [Symbol.iterator]() {
         var nextIndex = 0;
 
-        return {
+        return { // 팩토리 패턴
             next : () =>{
                 return {
                     value : this._array[nextIndex++],
