@@ -44,7 +44,7 @@ cDecA = __decorate([
     addHello
 ], cDecA);
 const cda = new cDecA();
-cda.hello(); // spring에서 사용하는 기법중 하나\
+cda.hello(); // spring에서 사용하는 기법중 하나
 /// Method Decorator ///
 function editable(canBeEdit) {
     return function (target, propN, description) {
@@ -72,3 +72,5 @@ md.hello = function () {
     console.log("World!");
 };
 md.hello();
+/// Property Decorator ///
+/// Parameter Decorator ///
