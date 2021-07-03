@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="12dp"
+    android:gravity="center"
     >
 
     <TextView
@@ -13,34 +15,79 @@
         android:gravity="center"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="24sp"
+        android:layout_marginBottom="16dp"
         android:text="LOGIN"/>
+
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:background="@null"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/birthday_box"
         android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
         />
-
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Email"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:text="LogIn"
-        />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Password"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_light_blue"
+        android:gravity="center"
+        android:clickable="true"
+        android:weightSum="10"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:src="@drawable/outline_manage_accounts_black_tfsp"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_weight="8"
+            android:text="LogIn"
+            />
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:layout_marginBottom="16dp"
         android:text="Or"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="50sp"
-        android:text="LogIn With Facebook"
+        android:background="@drawable/btn_blue"
+        android:layout_marginBottom="16dp"
+        android:text="LogIn With Youtube"
         />
 
     <LinearLayout
