@@ -55,7 +55,6 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_light_blue"
         android:gravity="center"
-        android:clickable="true"
         android:weightSum="10"
         android:orientation="horizontal">
 
