@@ -9,8 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private String[] localDataSet;
+    private List<NewsDataParsing> localDataSet;
 
     /**
      *
@@ -43,7 +45,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
      * @param dataSet String[] containing the data to populate views to be used
      *                by RecyclerView.
      */
-    public MyAdapter(String[] dataSet) { // 데이터 셋의 자료형을 자유롭게 설정 가능
+    public MyAdapter(List<NewsDataParsing> dataSet) { // 데이터 셋의 자료형을 자유롭게 설정 가능
         localDataSet = dataSet; // 초기 데이터 형태를 넣어주는데, 스트링 배열로 넣어줌
         // 뷰 홀더가 dataset의 길이만큼 반복한다
     }
@@ -64,12 +66,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText(localDataSet[position]);
+
+        //viewHolder.getTextView().setText(localDataSet[position]);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.length;
+        //return localDataSet.length;
+        return 0;
     }
 }
