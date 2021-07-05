@@ -25,6 +25,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         private final TextView _mtextView;
         private final TextView _mtextViewTitle;
         private SimpleDraweeView _mImageView;
+        public View rootView;
 
         public ViewHolder(View view) {
             super(view);
@@ -32,6 +33,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             _mtextViewTitle = (TextView) view.findViewById(R.id.row_news_tv_title);
             _mtextView = (TextView) view.findViewById(R.id.row_news_tv_content);
             _mImageView = (SimpleDraweeView) view.findViewById(R.id.row_news_iv);
+            rootView = view;
 
             view.setClickable(true);
             view.setEnabled(true);
@@ -72,10 +74,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         Uri uri = Uri.parse(tmpNews.get_urlImage());
         viewHolder._mImageView.setImageURI(uri);
 
+        // tag를 달아줘야 함
+        viewHolder.rootView.setTag(position); // 루트뷰에게 태그(순서값)을 붙여줌
     }
 
     @Override
     public int getItemCount() {
         return localDataSet == null ? 0 : localDataSet.size(); // 삼항 연산자
+    }
+
+    public NewsDataParsing getNews(int position){ // NewsActivity에서 데이터 가져오기 위한 함수
+        return localDataSet != null ? localDataSet.get(position) : null;
     }
 }

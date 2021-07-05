@@ -1,7 +1,9 @@
 package kplo.com;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -82,7 +84,22 @@ public class NewsActivity extends AppCompatActivity {
                                 news.add(newsData);
                             }
 
-                            _mAdapter = new MyAdapter(news,NewsActivity.this);
+                            _mAdapter = new MyAdapter(news, NewsActivity.this, new View.OnClickListener() {
+                                // MyAdapter에서 눌렀을때 결과적으로 NewsActivity의 온클릭 리스너로 돌아옴 (태그 사용)
+                                @Override
+                                public void onClick(View v) {
+                                    // Tag는 오브젝트이기 때문에 null체크 해줘야 함
+                                    if(v.getTag() != null){ // MyAdapter에서 달아준 태그 값
+                                        int position = (int) v.getTag(); // 오브젝트 형변환시 null이면 exception throw
+                                        NewsDataParsing nd =  ((MyAdapter)_mAdapter).getNews(position); // 캐스팅으로 부모 명시, 이후 함수 가져오기
+                                        // 캐스팅 이전에 _mAdapter는 RecyclerView.Adapter 이기 때문에 getNews 존재 x
+                                        Intent intent = new Intent(NewsActivity.this, LoginResultActivity.class);
+                                        intent.putExtra("res_email",nd.get_title());
+                                        intent.putExtra("res_passwd",nd.get_content());
+                                        startActivity(intent);
+                                    }
+                                }
+                            });
                             _mRecyclerView.setAdapter(_mAdapter);
 
                         } catch (JSONException e) {
