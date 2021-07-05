@@ -1,5 +1,7 @@
 package kplo.com;
 
+import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,29 +11,31 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
+
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<NewsDataParsing> localDataSet;
+    private static View.OnClickListener _mOnClick;
 
-    /**
-     *
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
         private final TextView _mtextView;
         private final TextView _mtextViewTitle;
-        private ImageView _mImageView;
-        public ImageView mImageView;
+        private SimpleDraweeView _mImageView;
 
         public ViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
 
             _mtextViewTitle = (TextView) view.findViewById(R.id.row_news_tv_title);
             _mtextView = (TextView) view.findViewById(R.id.row_news_tv_content);
-            _mImageView = (ImageView) view.findViewById(R.id.row_news_iv);
+            _mImageView = (SimpleDraweeView) view.findViewById(R.id.row_news_iv);
+
+            view.setClickable(true);
+            view.setEnabled(true);
+            view.setOnClickListener(_mOnClick);
         }
 
         public TextView getTextView() {
@@ -39,15 +43,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
     }
 
-    /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used
-     *                by RecyclerView.
-     */
-    public MyAdapter(List<NewsDataParsing> dataSet) { // 데이터 셋의 자료형을 자유롭게 설정 가능
+    public MyAdapter(List<NewsDataParsing> dataSet, Context context, View.OnClickListener onClick) { // 데이터 셋의 자료형을 자유롭게 설정 가능
         localDataSet = dataSet; // 초기 데이터 형태를 넣어주는데, 스트링 배열로 넣어줌
         // 뷰 홀더가 dataset의 길이만큼 반복한다
+        Fresco.initialize(context);
+        _mOnClick = onClick;
     }
 
     // Create new views (invoked by the layout manager)
@@ -55,25 +55,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.row_news, viewGroup, false);
+                .inflate(R.layout.row_news_card, viewGroup, false);
 
         return new ViewHolder(view);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) { // 반복한 컨텐츠를 bind한다 (push)
+        // position은 인덱스 번호
 
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
+        NewsDataParsing tmpNews = localDataSet.get(position);
 
-        //viewHolder.getTextView().setText(localDataSet[position]);
+        viewHolder._mtextViewTitle.setText(tmpNews.get_title());
+        viewHolder._mtextView.setText(tmpNews.get_content());
+        // 이미지 url을 통해 이미지를 가져와야 함 => fresco
+        Uri uri = Uri.parse(tmpNews.get_urlImage());
+        viewHolder._mImageView.setImageURI(uri);
+
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        //return localDataSet.length;
-        return 0;
+        return localDataSet == null ? 0 : localDataSet.size(); // 삼항 연산자
     }
 }

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -19,7 +20,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NewsActivity extends AppCompatActivity {
     private String[] _myDataset = {"1","2"};
@@ -74,12 +77,12 @@ public class NewsActivity extends AppCompatActivity {
                                 NewsDataParsing newsData = new NewsDataParsing();
                                 newsData.set_title(tObj.getString("title"));
                                 newsData.set_urlImage(tObj.getString("urlToImage"));
-                                newsData.set_content(tObj.getString("content"));
+                                newsData.set_content(tObj.getString("description"));
 
                                 news.add(newsData);
                             }
 
-                            _mAdapter = new MyAdapter(news);
+                            _mAdapter = new MyAdapter(news,NewsActivity.this);
                             _mRecyclerView.setAdapter(_mAdapter);
 
                         } catch (JSONException e) {
@@ -91,7 +94,19 @@ public class NewsActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.e("NewsActivity","String Request Error!");
             }
-        });
+        }) {
+
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                //headers.put("Content-Type", "application/json");
+                headers.put("User-Agent", "Mozilla/5.0");
+                return headers;
+            }
+        };
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
