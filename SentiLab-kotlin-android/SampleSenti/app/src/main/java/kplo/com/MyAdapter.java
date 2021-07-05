@@ -19,6 +19,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView _mtextView;
+        private final TextView _mtextViewTitle;
         private ImageView _mImageView;
         public ImageView mImageView;
 
@@ -26,7 +27,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             super(view);
             // Define click listener for the ViewHolder's View
 
-            _mtextView = (TextView) view.findViewById(R.id.row_news_tv);
+            _mtextViewTitle = (TextView) view.findViewById(R.id.row_news_tv_title);
+            _mtextView = (TextView) view.findViewById(R.id.row_news_tv_content);
             _mImageView = (ImageView) view.findViewById(R.id.row_news_iv);
         }
 
