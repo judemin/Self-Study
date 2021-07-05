@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextInputEditText tIET_email, tIET_password;
     LinearLayout linLay_login;
+    Button faceButton;
     String emailOk = "gmail";
     String passwdOk = "1234";
 
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         tIET_email = findViewById(R.id.textInp_email);
         tIET_password = findViewById(R.id.textInp_password);
         linLay_login = findViewById(R.id.linlayout_login);
+        faceButton = findViewById(R.id.act_login_faceButton);
 
         // 1. 값을 가져온다 - 검사 (123@gmail.com / 1234)
         // 2. 클릭을 감지한다
@@ -77,6 +80,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
+            }
+        });
+
+        faceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                startActivity(intent);
             }
         });
     }

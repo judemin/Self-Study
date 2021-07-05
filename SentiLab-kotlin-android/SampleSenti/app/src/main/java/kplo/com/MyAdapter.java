@@ -43,6 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
      */
     public MyAdapter(String[] dataSet) { // 데이터 셋의 자료형을 자유롭게 설정 가능
         localDataSet = dataSet; // 초기 데이터 형태를 넣어주는데, 스트링 배열로 넣어줌
+        // 뷰 홀더가 dataset의 길이만큼 반복한다
     }
 
     // Create new views (invoked by the layout manager)
@@ -57,7 +58,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, final int position) { // 반복한 컨텐츠를 bind한다 (push)
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element

@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class NewsActivity extends AppCompatActivity {
+    private String[] _myDataset = {"1","2"};
+
     private RecyclerView _mRecyclerView;
     private RecyclerView.Adapter _mAdapter;
     private RecyclerView.LayoutManager _mLayoutManager;
@@ -22,7 +24,7 @@ public class NewsActivity extends AppCompatActivity {
         _mLayoutManager = new LinearLayoutManager(this);
         _mRecyclerView.setLayoutManager(_mLayoutManager);
 
-        _mAdapter = new MyAdapter(myDataset);
+        _mAdapter = new MyAdapter(_myDataset);
         _mRecyclerView.setAdapter(_mAdapter);
     }
 }

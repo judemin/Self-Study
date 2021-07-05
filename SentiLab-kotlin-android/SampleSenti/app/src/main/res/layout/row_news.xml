@@ -2,20 +2,19 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="100dp"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/row_news_iv"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:background="@null"
-            android:src="@drawable/birthday_box"
-            />
+            android:src="@drawable/birthday_box" />
 
         <TextView
             android:id="@+id/row_news_tv"

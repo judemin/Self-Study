@@ -86,6 +86,7 @@
         android:text="Or"/>
 
     <Button
+        android:id="@+id/act_login_faceButton"
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:background="@drawable/btn_blue"
