@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         faceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                Intent intent = new Intent(MainActivity.this, FaceActivity.class);
                 startActivity(intent);
             }
         });
