@@ -5,6 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="10"
     >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/act_chat_recLay"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="9"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:weightSum="10"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        >
+        <EditText
+            android:id="@+id/act_chat_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="9"/>
+        <Button
+            android:id="@+id/act_chat_sendBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Send"/>
+    </LinearLayout>
 
 </LinearLayout>
