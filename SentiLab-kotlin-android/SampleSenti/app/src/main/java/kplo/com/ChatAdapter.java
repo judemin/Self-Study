@@ -71,4 +71,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     public ChatData getChat(int position){
         return localDataSet != null ? localDataSet.get(position) : null;
     }
+
+    public void addChat(ChatData chat){
+        localDataSet.add(chat);
+        // 로컬 데이터 셋에 데이터를 넣어주면 notify해줘여 함
+        notifyItemInserted(localDataSet.size() - 1); // position이 어디인지 같이 알려줘야 함
+        // 데이터 갱신용 코드
+    }
 }
